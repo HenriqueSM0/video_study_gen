@@ -99,7 +99,6 @@ class Agent_tools:
         slide_height = prs.slide_height
         half_width = slide_width // 2
 
-        # Use a blank layout to avoid default placeholders
         blank_layout = prs.slide_layouts[6]  # index 6 = blank
 
         for i in range(len(slides)):
@@ -154,23 +153,26 @@ class Agent_tools:
                 run.font.color.rgb = RGBColor(0xFF, 0xFF, 0xFF)
                 run.font.size = Pt(16)
 
-            # ── RIGHT HALF: image at original aspect ratio, centered ─────
+            # RIGHT HALF: image at original aspect ratio, centered
+            
             image_files = sorted(os.listdir(self.frames_folder))
             image_path = os.path.join(self.frames_folder, image_files[i])
 
-            # Measure original image size to preserve aspect ratio
+           
             from PIL import Image as PILImage
             with PILImage.open(image_path) as img:
                 img_w, img_h = img.size
 
-            # Scale to fit within the right half, preserving aspect ratio
+            # Scaling to fit within the right half, preserving aspect ratio
+            
             available_w = half_width
             available_h = slide_height
             scale = min(available_w / img_w, available_h / img_h)
             pic_w = int(img_w * scale)
             pic_h = int(img_h * scale)
 
-            # Center within the right half
+            # Center only left side
+            
             pic_left = half_width + (available_w - pic_w) // 2
             pic_top = (available_h - pic_h) // 2
 
