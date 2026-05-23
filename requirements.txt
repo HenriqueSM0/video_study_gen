@@ -6,6 +6,8 @@ certifi==2026.4.22
 click==8.3.3
 distro==1.9.0
 docstring_parser==0.18.0
+ffmpeg-python==0.2.0
+future==1.0.0
 gitdb==4.0.12
 GitPython==3.1.50
 groq==1.2.0
@@ -21,7 +23,6 @@ markdown-it-py==4.2.0
 mdurl==0.1.2
 packaging==26.2
 pillow==12.2.0
-pip==24.0
 pydantic==2.13.4
 pydantic_core==2.46.4
 pydantic-settings==2.14.1
