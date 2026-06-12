@@ -41,3 +41,4 @@ typing_extensions==4.15.0
 typing-inspection==0.4.2
 xlsxwriter==3.2.9
 yt-dlp==2026.3.17
+logging
