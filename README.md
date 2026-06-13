@@ -59,8 +59,8 @@ You will be prompted for:
 ```
 video_study_gen/
 ├── transcripter.py     # Main script
-├── quiz.md             # Prompt template for quiz generation
-├── slide.md            # Prompt template for slide generation
+├── prompts ├── quiz.md             # Prompt template for quiz generation
+            ├── slide.md            # Prompt template for slide generation
 ├── frames/             # Extracted video frames (will be auto created, auto-populated)
 ├── requirements.txt
 ├── .env_ex             # Example environment file
