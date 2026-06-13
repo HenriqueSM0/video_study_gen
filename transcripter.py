@@ -28,8 +28,7 @@ logging.basicConfig(
 logger = logging.getLogger("video_study_gen")
  
 load_dotenv()
- 
- 
+
 # ---------------------------------------------------------------------------
 # Environment / pre-flight validation
 # ---------------------------------------------------------------------------
@@ -52,7 +51,7 @@ def validate_env() :
  
     # --- Required files ---
     for fname in ("quiz.md", "slide.md"):
-        if not os.path.isfile(fname):
+        if not os.path.isfile("prompts/" + fname):
             logger.error("Required prompt file not found: %s", fname)
             ok = False
  
@@ -206,8 +205,8 @@ class Video_decompose:
  
 class Agent_tools:
     agent = Agent(model=Agno_Groq(id="openai/gpt-oss-120b"))
-    quiz_prompt = "quiz.md"
-    slide_prompt = "slide.md"
+    quiz_prompt = "prompts/quiz.md"
+    slide_prompt = "prompts/slide.md"
     frames_folder = Video_decompose.frames_dir
  
     def file_to_prompt(self, filename: str) -> str:
