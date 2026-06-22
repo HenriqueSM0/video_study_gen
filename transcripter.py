@@ -346,11 +346,10 @@ class Agent_tools:
         prompt = self.file_to_prompt(self.slide_prompt)
         Vc = Video_decompose()
         if not prompt: return
-        transcript = Video_decompose().transcribe_large_audio(url)
+        transcript = Vc.transcribe_large_audio(url)
         if not transcript:
             logger.error("Empty transcript — cannot generate slides.")
             return
- 
         raw = self.agent.run(prompt + "\n" + transcript).content
         try:
             slides = json.loads(raw.strip().strip("```json").strip("```"))
@@ -358,8 +357,7 @@ class Agent_tools:
             logger.error("Failed to parse slides JSON from model response: %s", exc)
             logger.debug("Raw model response:\n%s", raw)
             return
-
-        Video_decompose().extract_frames(len(slides))
+        Vc.extract_frames(len(slides))
         self.build_pptx(slides)
         os.remove(Vc.output)
         logger.info("Deleted temp file: %s", Vc.output)
